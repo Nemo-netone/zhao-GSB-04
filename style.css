@@ -1,0 +1,147 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  background: #f4f6fa;
+  color: #1f2733;
+  line-height: 1.5;
+}
+
+.topbar {
+  background: linear-gradient(120deg, #243b6b, #3d5a99);
+  color: #fff;
+  padding: 20px 28px;
+}
+.topbar h1 { margin: 0 0 6px; font-size: 22px; }
+.subtitle { margin: 0; font-size: 13px; opacity: .85; }
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(360px, 5fr) minmax(420px, 7fr);
+  gap: 18px;
+  padding: 18px 28px;
+  align-items: start;
+}
+@media (max-width: 960px) { .layout { grid-template-columns: 1fr; } }
+
+.pane {
+  background: #fff;
+  border: 1px solid #e3e7ef;
+  border-radius: 10px;
+  padding: 16px 18px;
+  box-shadow: 0 1px 3px rgba(31, 39, 51, .06);
+}
+.pane-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 10px; }
+.pane-head h2 { margin: 0; font-size: 16px; }
+.hint { font-size: 12px; color: #7c869a; }
+
+textarea {
+  width: 100%;
+  min-height: 150px;
+  resize: vertical;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 14px;
+  padding: 10px 12px;
+  border: 1px solid #ccd3df;
+  border-radius: 8px;
+  outline: none;
+}
+textarea:focus { border-color: #5a78c0; box-shadow: 0 0 0 3px rgba(90, 120, 192, .15); }
+
+.controls { display: flex; align-items: center; gap: 10px; margin: 12px 0 6px; flex-wrap: wrap; }
+.count-label { font-size: 13px; color: #4a5568; }
+.count-label input { width: 80px; padding: 5px 8px; border: 1px solid #ccd3df; border-radius: 6px; }
+
+button {
+  padding: 7px 16px;
+  border: none;
+  border-radius: 7px;
+  background: #3d5a99;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+}
+button:hover { background: #324b82; }
+button.secondary { background: #6b7688; }
+button.secondary:hover { background: #586171; }
+
+.base-time { font-size: 12px; color: #7c869a; margin-bottom: 10px; }
+
+.line-states { margin-top: 8px; }
+.line-state {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  font-size: 13px;
+  padding: 7px 10px;
+  border-radius: 7px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+.line-ok { background: #eef7ef; border: 1px solid #cfe6d2; }
+.line-bad { background: #fdeeec; border: 1px solid #f3c9c2; }
+.line-no { font-weight: 600; white-space: nowrap; }
+.line-expr { font-family: Consolas, monospace; }
+.line-msg { margin-left: auto; font-size: 12px; }
+.line-ok .line-msg { color: #2f7d3a; }
+.line-bad .line-msg { color: #c0392b; }
+
+.muted { color: #8b94a5; font-size: 13px; padding: 6px 2px; }
+
+.summary {
+  font-size: 13px;
+  color: #4a5568;
+  background: #f0f3f9;
+  border-radius: 7px;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+}
+
+.table-meta { font-size: 12px; color: #7c869a; margin-bottom: 6px; }
+.table-wrap { overflow: auto; max-height: 70vh; border: 1px solid #e7eaf1; border-radius: 8px; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+thead th {
+  position: sticky;
+  top: 0;
+  background: #eef1f7;
+  text-align: left;
+  padding: 8px 10px;
+  font-weight: 600;
+  border-bottom: 1px solid #dde2ec;
+  z-index: 1;
+}
+tbody td { padding: 6px 10px; border-bottom: 1px solid #f0f2f6; }
+tbody tr:hover { background: #f8fafd; }
+td.num { text-align: right; color: #7c869a; white-space: nowrap; }
+td.time { font-family: Consolas, monospace; white-space: nowrap; font-weight: 600; }
+code { font-family: Consolas, "Courier New", monospace; }
+
+.test-panel {
+  margin: 0 28px 32px;
+  background: #fff;
+  border: 1px solid #e3e7ef;
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+.test-panel h2 { margin: 0 0 12px; font-size: 16px; }
+.test-summary { font-weight: 600; margin-bottom: 12px; padding: 8px 12px; border-radius: 7px; }
+.test-summary.all-pass { background: #eef7ef; color: #2f7d3a; }
+.test-summary.has-fail { background: #fdeeec; color: #c0392b; }
+
+.test-item { padding: 6px 8px; border-bottom: 1px solid #f2f4f8; font-size: 13px; }
+.test-item.fail { background: #fdf3f2; border-radius: 6px; }
+.test-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 4px;
+  padding: 1px 6px;
+  margin-right: 8px;
+}
+.test-item.pass .test-badge { background: #d4edd8; color: #2f7d3a; }
+.test-item.fail .test-badge { background: #f5c6c0; color: #c0392b; }
+.test-index { color: #8b94a5; margin-right: 6px; }
+.test-detail { margin: 6px 0 2px 56px; font-size: 12px; color: #5d6675; }
+.test-detail code { background: #f0f2f6; padding: 1px 5px; border-radius: 4px; word-break: break-all; }

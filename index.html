@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cron 触发时间计算器</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Cron 触发时间计算器</h1>
+    <p class="subtitle">5 段：分 时 日 月 周 · 支持 * 列表 区间 步进 英文缩写 · 日/周同时指定时取“或”（标准 crontab 语义）· 纯本地运行</p>
+  </header>
+
+  <main class="layout">
+    <section class="pane pane-left">
+      <div class="pane-head">
+        <h2>① 输入表达式</h2>
+        <span class="hint">一行一条，空行 / # 注释 自动跳过</span>
+      </div>
+      <textarea id="cronInput" spellcheck="false">0 9 * * 1-5
+*/15 8-18 * * MON-FRI
+0 0 29 2 *</textarea>
+      <div class="controls">
+        <label class="count-label">每条取
+          <input id="countInput" type="number" min="1" max="5000" value="1000">
+          次触发
+        </label>
+        <button id="runBtn" type="button">重新计算</button>
+        <button id="testBtn" type="button" class="secondary">运行自测</button>
+      </div>
+      <div id="baseTime" class="base-time"></div>
+      <div id="lineStates" class="line-states"></div>
+    </section>
+
+    <section class="pane pane-right">
+      <div class="pane-head">
+        <h2>② 触发时间总表</h2>
+        <span class="hint">多表达式合并排序，标注来源</span>
+      </div>
+      <div id="summary" class="summary"></div>
+      <div id="resultTable" class="table-wrap"></div>
+    </section>
+  </main>
+
+  <section id="testPanel" class="test-panel" style="display:none;">
+    <h2>③ 自测断言</h2>
+    <div id="testOutput"></div>
+  </section>
+
+  <!-- 普通 script 标签，保证 file:// 双击直接可用（不使用 ES module） -->
+  <script src="parser.js"></script>
+  <script src="fields.js"></script>
+  <script src="schedule.js"></script>
+  <script src="selftest.js"></script>
+  <script src="render.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
