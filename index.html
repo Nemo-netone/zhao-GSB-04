@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cron 触发时间计算器</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Cron 触发时间计算器</h1>
+    <p class="hint">
+      5 段格式：分 时 日 月 周。支持数字、逗号列表（1,5,9）、区间（1-5）、步进（*/15、3-30/5）、星号；
+      月和周接受英文缩写（JAN、MON，大小写随意）。日与周同时指定时满足其一即触发。一行一条表达式。
+    </p>
+  </header>
+  <main>
+    <section class="panel-left">
+      <label for="cron-input">cron 表达式（一行一条）</label>
+      <textarea id="cron-input" rows="8" spellcheck="false">0 9 * * 1-5</textarea>
+      <div class="buttons">
+        <button id="run-btn" type="button">计算</button>
+        <button id="test-btn" type="button">运行自测</button>
+      </div>
+      <div id="errors"></div>
+      <div id="test-results"></div>
+    </section>
+    <section class="panel-right">
+      <div id="results"></div>
+    </section>
+  </main>
+  <script src="js/fields.js"></script>
+  <script src="js/parser.js"></script>
+  <script src="js/scheduler.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/tests.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
